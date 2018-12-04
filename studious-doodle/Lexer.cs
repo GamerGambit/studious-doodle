@@ -124,7 +124,7 @@ namespace studious_doodle
 									Next();
 								}
 
-								var codepoint = int.Parse(source.Substring(currentIndex - 4, 4), System.Globalization.NumberStyles.HexNumber);
+								var codepoint = int.Parse(source.Substring(currentIndex - 4, 4), NumberStyles.HexNumber);
 								sb.Append(char.ConvertFromUtf32(codepoint));
 
 								break;
@@ -257,11 +257,50 @@ namespace studious_doodle
 						Next();
 						ReadString();
 						break;
-				}
 
-				if (char.IsNumber(currentChar))
-				{
-					ReadNumber();
+					default:
+						{
+							if (char.IsNumber(currentChar))
+							{
+								ReadNumber();
+							}
+							else
+							{
+								var sb = new StringBuilder();
+								while (!EOS() && char.IsLetter(currentChar))
+								{
+									sb.Append(currentChar);
+									Next();
+								}
+
+								var str = sb.ToString();
+								if (str == "true")
+								{
+									Tokens.Add(new Token()
+									{
+										Type = TokenType.True
+									});
+								}
+								else if (str == "false")
+								{
+									Tokens.Add(new Token()
+									{
+										Type = TokenType.False
+									});
+								}
+								else if (str == "null")
+								{
+									Tokens.Add(new Token()
+									{
+										Type = TokenType.Null
+									});
+								}
+								else
+									Error("Invalid JSON sequence");
+							}
+
+							break;
+						}
 				}
 			}
 		}
