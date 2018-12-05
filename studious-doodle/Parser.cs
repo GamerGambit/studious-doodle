@@ -58,11 +58,11 @@ namespace studious_doodle
 
 			if (currentToken.Type == Lexer.TokenType.BrkCurlOpen)
 			{
-				document.root = ReadObject();
+				document = ReadObject();
 			}
 			else if (currentToken.Type == Lexer.TokenType.BrkSquareOpen)
 			{
-				document.root = ReadArray();
+				document = ReadArray();
 			}
 			else
 			{
