@@ -1,8 +1,11 @@
-﻿using System;
-
-namespace studious_doodle
+﻿namespace studious_doodle
 {
-	public class JSON
+	public static class JSON
 	{
+		public static dynamic ParseString(string source)
+		{
+			var parser = new Parser(source);
+			return parser.document.root;
+		}
 	}
 }

@@ -5,4 +5,8 @@
     <RootNamespace>studious_doodle</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+  </ItemGroup>
+
 </Project>

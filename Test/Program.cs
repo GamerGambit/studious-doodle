@@ -1,5 +1,6 @@
-﻿using System;
-using studious_doodle;
+﻿using studious_doodle;
+
+using System;
 
 namespace Test
 {
@@ -7,12 +8,31 @@ namespace Test
 	{
 		static void Main(string[] args)
 		{
-			var json = new Lexer("{ \"foo\" : \"bar\", \"faz\" : 1337, \"unicode test\" : \"\\u00bb \\u00b5\", \"number test\" : 1.5e10 }");
-			foreach (var token in json.Tokens)
-			{
-				Console.WriteLine(string.Format($"{token.Type, 14}{(!(token.Value is null) ? (" | " + token.Value) : "")}"));
-			}
-
+			var json = JSON.ParseString(@"
+{
+	""foo"" : ""bar"",
+	""faz"" : 1337,
+	""unicode_test"" : ""\u00bb \u00b5"",
+	""number_test"" : 1.5e10,
+	""Booln"" : false,
+	""nested"" : {
+		""value"" : 7331,
+		""nested"" : {
+			""shit"" : ""works""
+		}
+	},
+	""array"" : [
+		11333377,
+		{
+			""key"" : ""value""
+		},
+		[
+			""nested""
+		]
+	]
+}");
+			json.nested.nested.shit = "changed";
+			Console.WriteLine(json.array[1].key);
 			Console.ReadLine();
 		}
 	}

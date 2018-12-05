@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
 namespace studious_doodle
 {
-	public class Lexer
+	internal class Lexer
 	{
 		public enum TokenType
 		{
