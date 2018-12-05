@@ -168,7 +168,7 @@ namespace studious_doodle
 				}
 			}
 
-			if (!float.TryParse(sb.ToString(), NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent, new CultureInfo("en-US"), out var result))
+			if (!double.TryParse(sb.ToString(), NumberStyles.AllowDecimalPoint | NumberStyles.AllowExponent, new CultureInfo("en-US"), out var result))
 				Error("Invalid number format");
 
 			Tokens.Add(new Token()
