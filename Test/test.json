@@ -4,6 +4,7 @@
 	"unicode_test": "\u00bb \u00b5",
 	"number_test": 1.5e10,
 	"Booln": false,
+	"null": null,
 	"nested": {
 		"value": 7331,
 		"nested": {
