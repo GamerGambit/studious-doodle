@@ -1,3 +1,5 @@
+﻿using System.IO;
+
 namespace studious_doodle
 {
 	public static class JSON
@@ -6,6 +8,12 @@ namespace studious_doodle
 		{
 			var parser = new Parser(source);
 			return parser.document;
+		}
+
+		public static dynamic ParseFile(string path)
+		{
+			var contents = File.ReadAllText(path);
+			return ParseString(contents);
 		}
 	}
 }
